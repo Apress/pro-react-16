@@ -1,0 +1,27 @@
+type product {
+    id: ID!,
+    name: String!,
+    category: String!
+    price: Float!
+}
+
+type supplier {
+    id: ID!,
+    name: String!,
+    city: String!,
+    products(nameFilter: String = ""): [product]   
+}
+
+type Query {
+    products: [product],
+    product(id: ID!): product,
+    suppliers: [supplier]    
+    supplier(id: ID!): supplier
+}
+
+type Mutation {
+    storeProduct(id: ID, name: String!, category: String!, price: Float!): product
+    storeSupplier(id: ID, name: String!, city: String!, products: [Int]): supplier
+    deleteProduct(id: ID!): ID
+    deleteSupplier(id: ID!): ID
+}

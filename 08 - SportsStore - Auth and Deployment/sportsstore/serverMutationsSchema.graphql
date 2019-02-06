@@ -1,0 +1,14 @@
+input productStore {
+    name: String!, description: String!, category: String!, price: Float!
+}
+
+input productUpdate {
+    id: ID!, name: String, description: String, category: String, price: Float
+}
+
+type Mutation {
+    storeProduct(product: productStore): product
+    updateProduct(product: productUpdate): product
+    deleteProduct(id: ID!): product
+    shipOrder(id: ID!, shipped: Boolean!): order
+}
