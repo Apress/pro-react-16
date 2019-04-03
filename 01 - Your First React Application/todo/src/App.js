@@ -22,17 +22,19 @@ export default class App extends Component {
         this.setState({ newItemText: event.target.value });
     }
 
+    saveState = () => localStorage.setItem("todos", JSON.stringify(this.state))
+
     createNewTodo = (task) => {
         if (!this.state.todoItems.find(item => item.action === task)) {
             this.setState({ 
                 todoItems: [...this.state.todoItems, { action: task, done: false }]
-            }, () => localStorage.setItem("todos", JSON.stringify(this.state)));        
+            }, this.saveState);
         }
     }
 
     toggleTodo = (todo) => this.setState({ todoItems: 
         this.state.todoItems.map(item => item.action === todo.action 
-            ? { ...item, done: !item.done } : item) });
+            ? { ...item, done: !item.done } : item) }, this.saveState);
     
     todoTableRows = (doneValue) => this.state.todoItems
         .filter(item => item.done === doneValue).map(item => 
