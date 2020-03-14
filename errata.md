@@ -54,3 +54,9 @@ Use the following instead of Listing 4-38:
 
 ---
 
+**Chapter 13**
+
+On page 370, there should be **`useEffect`** instead of **`useState`**:
+
+>The function passed to **`useState`** can return a cleanup function that will be invoked when the component is unmounted, providing a feature similar to the componentWillUnmount method, as shown in `Listing 13-23`. 
+
