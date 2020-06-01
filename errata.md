@@ -54,3 +54,48 @@ Use the following instead of Listing 4-38:
 
 ---
 
+**Chapter 10**
+
+The code in Listing 11-13 does not work when the project has been created using recent versions of the Create React App package. Projects are created with strict mode enabled, which changes the way that updates are handled during development in order to detect accidental side-effects. To resolve the problem, use the following code in the App.js file:
+
+    import React, { useState } from "react";
+    import { Summary } from "./Summary";
+
+    export default function App() {
+        const [counter, setCounter] = useState(0);
+        const incrementCounter = (increment) => setCounter(counter + increment);
+
+        const [names, setNames] = useState(["Bob", "Alice", "Dora"]);
+
+        function reverseNames() {
+            setNames(names => names.reverse());
+        }
+        
+        function promoteName(name) {
+            setNames(names => [name, ...names.filter(val => val !== name)]);
+        }
+
+        return (
+            <table className="table table-sm table-striped">
+            <thead>
+                <tr><th>#</th><th>Name</th><th>Letters</th></tr>
+            </thead>
+            <tbody>
+                { names.map((name, index) => 
+                    <tr key={ name }>
+                    <Summary index={ index } name={ name } 
+                        reverseCallback={ reverseNames } 
+                        promoteCallback={ promoteName } 
+                        counter={counter}
+                        incrementCallback={incrementCounter}
+                    />
+                    </tr>
+                )}
+            </tbody>
+            </table>
+        );
+    }
+
+(Thanks to Mariusz Aleksandrowicz and Loic Njike for reporting this problem).
+
+---
