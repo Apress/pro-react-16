@@ -54,7 +54,7 @@ Use the following instead of Listing 4-38:
 
 ---
 
-**Chapter 10**
+**Chapter 11**
 
 The code in Listing 11-13 does not work when the project has been created using recent versions of the Create React App package. Projects are created with strict mode enabled, which changes the way that updates are handled during development in order to detect accidental side-effects. To resolve the problem, use the following code in the App.js file:
 
