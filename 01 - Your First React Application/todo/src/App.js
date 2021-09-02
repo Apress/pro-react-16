@@ -6,6 +6,8 @@ import { VisibilityControl } from "./VisibilityControl";
 
 export default class App extends Component {
 
+    localStorageKey = "todos";
+
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +28,7 @@ export default class App extends Component {
         if (!this.state.todoItems.find(item => item.action === task)) {
             this.setState({ 
                 todoItems: [...this.state.todoItems, { action: task, done: false }]
-            }, () => localStorage.setItem("todos", JSON.stringify(this.state)));        
+            }, () => localStorage.setItem(this.localStorageKey, JSON.stringify(this.state)));        
         }
     }
 
@@ -41,7 +43,7 @@ export default class App extends Component {
          
 
     componentDidMount = () => {
-        let data = localStorage.getItem("todos");
+        let data = localStorage.getItem(this.localStorageKey);
         this.setState(data != null 
             ? JSON.parse(data) 
             :  { 
