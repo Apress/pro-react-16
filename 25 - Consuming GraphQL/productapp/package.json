@@ -5,7 +5,7 @@
   "dependencies": {
     "apollo-boost": "^0.1.22",
     "axios": "^0.18.0",
-    "bootstrap": "^4.1.2",
+    "bootstrap": "^4.3.1",
     "react": "^16.8.0",
     "react-apollo": "^2.3.2",
     "react-dom": "^16.8.0",
